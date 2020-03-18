@@ -9,8 +9,8 @@ using MuddyPawsApi.Models;
 namespace MuddyPawsApi.Migrations
 {
     [DbContext(typeof(MuddyPawsDBContext))]
-    [Migration("20200317144739_newMigration1")]
-    partial class newMigration1
+    [Migration("20200318133136_updated Model")]
+    partial class updatedModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,6 @@ namespace MuddyPawsApi.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("PetName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("PetID");

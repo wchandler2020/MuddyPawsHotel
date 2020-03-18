@@ -3,13 +3,27 @@ import { connect } from "react-redux";
 import * as actions from "../../actions/pets";
 
 const Pets = props => {
-  const { x, setx } = useState(0);
-
+  // const { x, setx } = useState(0);
+  console.log(props)
   useEffect(() => {
     props.getAllPets();
   }, []);
 
-  return <div>Pets</div>;
+  return(
+    <div>
+      Test
+      {
+        props.PetsList.map((index, pet) => {
+          return(
+            <div key={index}>
+                <h1>{pet.petName}</h1>
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+  
 };
 
 const mapStateToProps = state => ({

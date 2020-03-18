@@ -2,7 +2,7 @@
 
 namespace MuddyPawsApi.Migrations
 {
-    public partial class intialMigration : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

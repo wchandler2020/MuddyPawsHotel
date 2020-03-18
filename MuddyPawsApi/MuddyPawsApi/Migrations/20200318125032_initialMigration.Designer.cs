@@ -9,14 +9,14 @@ using MuddyPawsApi.Models;
 namespace MuddyPawsApi.Migrations
 {
     [DbContext(typeof(MuddyPawsDBContext))]
-    [Migration("20200317135651_newMigration")]
-    partial class newMigration
+    [Migration("20200318125032_initialMigration")]
+    partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.0")
+                .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 

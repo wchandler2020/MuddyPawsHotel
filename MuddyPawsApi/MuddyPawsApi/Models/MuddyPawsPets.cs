@@ -13,6 +13,6 @@ namespace MuddyPawsApi.Models
         public int PetID { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public int PetName { get; set; }
+        public string PetName { get; set; }
     }
 }

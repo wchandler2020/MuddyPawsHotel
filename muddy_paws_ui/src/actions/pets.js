@@ -12,6 +12,7 @@ export const getAll = () => dispatch => {
     .pets()
     .getAll()
     .then(response => {
+      console.log(response);
       dispatch({
         type: ACTION_TYPES.GET_ALL,
         payload: response.data
