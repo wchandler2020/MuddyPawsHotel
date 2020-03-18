@@ -10,6 +10,7 @@ export const ACTION_TYPES = {
 export const getAll = () => dispatch => {
   api
     .pets()
+    .getAll()
     .then(response => {
       dispatch({
         type: ACTION_TYPES.GET_ALL,
