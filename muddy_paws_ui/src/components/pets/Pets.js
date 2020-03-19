@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/pets";
+import PetsForm from "./PetsForm"
 
 const Pets = props => {
   // const { x, setx } = useState(0);
-  console.log(props)
   useEffect(() => {
-    props.getAllPets();
-  }, []);
-
+    props.getAllPets()
+  }, [])
+  
   return(
     <div>
-      Test
-      {
-        props.PetsList.map((index, pet) => {
-          return(
-            <div key={index}>
-                <h1>{pet.petName}</h1>
-            </div>
-          )
-        })
-      }
+      {props.PetsList.map(pet => {
+        return(
+          <div key={pet.petID}>
+              <h1>Pet: {pet.petName}</h1>
+          </div>
+        )
+      })}
+      <PetsForm />
     </div>
-  )
-  
+  ) 
 };
 
 const mapStateToProps = state => ({

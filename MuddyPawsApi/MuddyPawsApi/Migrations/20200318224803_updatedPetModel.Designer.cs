@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MuddyPawsApi.Models;
 
 namespace MuddyPawsApi.Migrations
 {
     [DbContext(typeof(MuddyPawsDBContext))]
-    partial class MuddyPawsDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200318224803_updatedPetModel")]
+    partial class updatedPetModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +37,7 @@ namespace MuddyPawsApi.Migrations
                     b.Property<string>("PetName")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("PetOwnersCity")
+                    b.Property<string>("PetOwnersAddress")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PetOwnersEmail")
@@ -45,21 +47,13 @@ namespace MuddyPawsApi.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PetOwnersNumber")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("PetOwnersState")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("PetOwnersStreetAddress")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("PetOwnersZipCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PetSize")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("PetTypePetType")
+                    b.Property<string>("PetType")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("SpecialNeeds")

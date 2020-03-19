@@ -20,3 +20,5 @@ export const getAll = () => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const create = (data, onSuccess) => dispatch => {};
