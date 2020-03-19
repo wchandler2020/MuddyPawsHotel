@@ -32,17 +32,15 @@ namespace MuddyPawsApi.Models
 
         [Column(TypeName = "nvarchar(100)")]
         public string PetOwnersState { get; set; }
+        
+        public int PetOwnersZipCode { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
-        public string PetOwnersZipCode { get; set; }
-
-        [Column(TypeName = "nvarchar(100)")]
-        public string  PetOwnersNumber{ get; set; }
+        public int  PetOwnersNumber{ get; set; }
 
         public string PetOwnersEmail { get; set; }
 
         [Column(TypeName = "nvarchar(1000)")]
-        public int SpecialNeeds { get; set; }
+        public string SpecialNeeds { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime CheckinDate { get; set; }

@@ -10,8 +10,8 @@ using MuddyPawsApi.Models;
 namespace MuddyPawsApi.Migrations
 {
     [DbContext(typeof(MuddyPawsDBContext))]
-    [Migration("20200319111554_updateToPetModel1")]
-    partial class updateToPetModel1
+    [Migration("20200319183820_updateToPetMigration")]
+    partial class updateToPetMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,8 +46,8 @@ namespace MuddyPawsApi.Migrations
                     b.Property<string>("PetOwnersName")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("PetOwnersNumber")
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int>("PetOwnersNumber")
+                        .HasColumnType("int");
 
                     b.Property<string>("PetOwnersState")
                         .HasColumnType("nvarchar(100)");
@@ -55,8 +55,8 @@ namespace MuddyPawsApi.Migrations
                     b.Property<string>("PetOwnersStreetAddress")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("PetOwnersZipCode")
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int>("PetOwnersZipCode")
+                        .HasColumnType("int");
 
                     b.Property<string>("PetSize")
                         .HasColumnType("nvarchar(100)");
@@ -65,7 +65,6 @@ namespace MuddyPawsApi.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("SpecialNeeds")
-                        .IsRequired()
                         .HasColumnType("nvarchar(1000)");
 
                     b.HasKey("PetID");
