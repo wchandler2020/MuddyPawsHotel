@@ -10,8 +10,8 @@ using MuddyPawsApi.Models;
 namespace MuddyPawsApi.Migrations
 {
     [DbContext(typeof(MuddyPawsDBContext))]
-    [Migration("20200319183820_updateToPetMigration")]
-    partial class updateToPetMigration
+    [Migration("20200320130105_updatedPetsModel")]
+    partial class updatedPetsModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,38 +34,38 @@ namespace MuddyPawsApi.Migrations
                     b.Property<DateTime>("CheckoutDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OwnersName")
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("PetName")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("PetOwnersCity")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("PetOwnersEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PetOwnersName")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("PetOwnersNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PetOwnersState")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("PetOwnersStreetAddress")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("PetOwnersZipCode")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PetSize")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("PetTypePetType")
+                    b.Property<string>("Size")
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("SpecialNeeds")
                         .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("StreetAddress")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("ZipCode")
+                        .HasColumnType("int");
 
                     b.HasKey("PetID");
 

@@ -16,28 +16,28 @@ namespace MuddyPawsApi.Models
         public string PetName { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string  PetTypePetType { get; set; }
+        public string  Type { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string PetSize { get; set; }
+        public string Size { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string PetOwnersName { get; set; }
+        public string OwnersName { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string PetOwnersStreetAddress { get; set; }
+        public string StreetAddress { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string PetOwnersCity { get; set; }
+        public string City { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string PetOwnersState { get; set; }
+        public string State { get; set; }
         
-        public int PetOwnersZipCode { get; set; }
+        public string ZipCode { get; set; }
 
-        public int  PetOwnersNumber{ get; set; }
+        public string Number{ get; set; }
 
-        public string PetOwnersEmail { get; set; }
+        public string Email { get; set; }
 
         [Column(TypeName = "nvarchar(1000)")]
         public string SpecialNeeds { get; set; }

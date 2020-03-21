@@ -1,0 +1,48 @@
+:root {
+  --container-bg-color: #333;
+  --left-bg-color: rgba(255, 0, 0, 0.7);
+  --right-bg-color: rgba(43, 43, 43, 0.7);
+  --main-font: "Poppins", sans-serif;
+  --hoover-width: 75%;
+  --remaining-width: 25%;
+  --speed: 1000ms;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: var(--main-font);
+  font-size: 4.5rem !important;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+p {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.main-btn {
+  margin: 30px 0 0 25px;
+}
+
+#showcase {
+  padding-top: 4rem;
+}
+
+#sh0wcase img {
+  width: 90%;
+  margin-left: 60px;
+}
+
+.showcase-right {
+  margin-top: 100px;
+}

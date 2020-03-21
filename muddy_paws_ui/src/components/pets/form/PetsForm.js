@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import useForm from "../useForm";
+import useForm from "../../useForm";
+import { connect } from "react-redux";
+import * as actions from "../../../actions/pets";
+
 const initialFieldValues = {
   PetName: "",
-  PetType: "",
-  PetSize: "",
-  PetOwnersName: "",
-  PetOwnersStreetAddress: "",
-  PetOwnersCity: "",
-  PetOwnersState: "",
-  PetOwnersNumber: "",
-  PetOwnersEmail: "",
+  Type: "",
+  Size: "",
+  OwnersName: "",
+  StreetAddress: "",
+  City: "",
+  State: "",
+  ZipCode: "",
+  Number: "",
+  Email: "",
   CheckinDate: "",
   CheckoutDate: "",
   SpecialNeeds: ""
@@ -22,6 +26,7 @@ const PetsForm = props => {
   const handleSubmit = event => {
     event.preventDefault();
     console.log(values);
+    props.CreatePet(values, () => console.log("it worked"));
   };
 
   return (
@@ -43,8 +48,8 @@ const PetsForm = props => {
           <label htmlFor="exampleFormControlInput1">Pet Size</label>
           <select
             className="form-control"
-            name="PetSize"
-            value={values.PetSize}
+            name="Size"
+            value={values.Size}
             onChange={handleChange}
           >
             <option>Large (70lbs or more)</option>
@@ -57,8 +62,8 @@ const PetsForm = props => {
           <label htmlFor="exampleFormControlInput1">Pet Type</label>
           <select
             className="form-control"
-            name="PetType"
-            value={values.PetType}
+            name="Type"
+            value={values.Type}
             onChange={handleChange}
           >
             <option>Dog</option>
@@ -89,10 +94,10 @@ const PetsForm = props => {
           <input
             type="text"
             className="form-control"
-            name="PetOwnersName"
-            id="PetOwnersName"
+            name="OwnersName"
+            id="OwnersName"
             placeholder="Your Name"
-            value={values.PetOwnersName}
+            value={values.OwnersName}
             onChange={handleChange}
           />
         </div>
@@ -103,10 +108,10 @@ const PetsForm = props => {
           <input
             type="text"
             className="form-control"
-            name="PetOwnersNumber"
-            id="PetOwnersNumber"
+            name="Number"
+            id="Number"
             placeholder="Your Phone Number"
-            value={values.PetOwnersNumber}
+            value={values.Number}
             onChange={handleChange}
           />
         </div>
@@ -114,9 +119,10 @@ const PetsForm = props => {
           <label htmlFor="exampleFormControlInput1">What is Your Email?</label>
           <input
             type="email"
-            name="PetOwnersEmail"
+            name="Email"
             className="form-control"
-            id="PetOwnersEmail"
+            id="Email"
+            value={values.Email}
             placeholder="name@example.com"
             onChange={handleChange}
           />
@@ -128,24 +134,24 @@ const PetsForm = props => {
           <input
             type="text"
             className="form-control"
-            name="PetOwnersStreetAddress"
-            id="PetOwnersStreetAddress"
+            name="StreetAddress"
+            id="StreetAddress"
             placeholder="Your Street Address"
-            value={values.PetOwnersStreetAddress}
+            value={values.StreetAddress}
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
           <label htmlFor="exampleFormControlSelect1">
-            What City DO You Live In?
+            What City Do You Live In?
           </label>
           <input
             type="text"
             className="form-control"
-            name="PetOwnersCity"
-            id="PetOwnersCity"
+            name="City"
+            id="City"
             placeholder="Your City"
-            value={values.PetOwnersCity}
+            value={values.City}
             onChange={handleChange}
           />
         </div>
@@ -155,9 +161,9 @@ const PetsForm = props => {
           </label>
           <select
             className="form-control"
-            id="PetOwnersState"
-            name="PetOwnersState"
-            value={values.PetOwnersState}
+            id="State"
+            name="State"
+            value={values.State}
             onChange={handleChange}
           >
             <option>Alabama</option>
@@ -213,12 +219,21 @@ const PetsForm = props => {
             <option>Wyoming</option>
           </select>
         </div>
+        <div className="form-group">
+          <label htmlFor="exampleFormControlSelect1">Zip Code</label>
+          <input
+            type="text"
+            className="form-control"
+            name="ZipCode"
+            id="ZipCode"
+            placeholder="12345"
+            value={values.ZipCode}
+            onChange={handleChange}
+          />
+        </div>
         <div>
           <button type="submit" className="btn btn-primary">
             Submit
-          </button>
-          <button type="button" className="btn btn-danger">
-            Reset
           </button>
         </div>
       </form>
@@ -226,4 +241,12 @@ const PetsForm = props => {
   );
 };
 
-export default PetsForm;
+const mapStateToProps = state => ({
+  PetsList: state.pets.list
+});
+
+const mapActionToProps = {
+  CreatePet: actions.create
+};
+
+export default connect(mapStateToProps, mapActionToProps)(PetsForm);

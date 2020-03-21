@@ -28,7 +28,6 @@ export const getAll = () => dispatch => {
 };
 
 export const create = (data, onSuccess) => dispatch => {
-  data = formatData(data);
   api
     .pets()
     .create()
