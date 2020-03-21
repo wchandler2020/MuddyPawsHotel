@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import img2 from "../../images/image2.jpg";
 
 const Registration = () => {
   return (
@@ -120,7 +119,10 @@ const Registration = () => {
                   </div>
                 </div>
                 <div className="form-row">
-                  <button type="button" className="btn btn-danger btn-lg">
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger btn-lg"
+                  >
                     Register
                   </button>
                 </div>

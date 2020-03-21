@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import logo1 from "../../images/logo.png";
 
 const Footer = () => {
   return (
@@ -7,11 +8,10 @@ const Footer = () => {
         <div className="row">
           <div className="col-12 col-md">
             <img
-              className="mb-2"
-              src="/docs/4.4/assets/brand/bootstrap-solid.svg"
-              alt
-              width={24}
-              height={24}
+              src={logo1}
+              className="logo"
+              alt=""
+              style={{ height: 120, width: 120, marginRight: 25 }}
             />
             <small className="d-block mb-3 text-muted">© 2017-2019</small>
           </div>
