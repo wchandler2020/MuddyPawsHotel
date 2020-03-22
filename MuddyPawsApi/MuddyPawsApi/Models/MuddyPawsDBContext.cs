@@ -13,5 +13,6 @@ namespace MuddyPawsApi.Models
 
         }
         public DbSet<MuddyPawsPets> muddyPawsPet { get; set; }
+        public DbSet<MuddyPawsEmployee> muddyPawsEmployee { get; set; }
     }
 }

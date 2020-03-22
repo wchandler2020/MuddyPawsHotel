@@ -19,6 +19,36 @@ namespace MuddyPawsApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("MuddyPawsApi.Models.MuddyPawsEmployee", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EmployeeEmail")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EmployeeName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EmployeePhone")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EmployeeRole")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("EmployeeId");
+
+                    b.ToTable("muddyPawsEmployee");
+                });
+
             modelBuilder.Entity("MuddyPawsApi.Models.MuddyPawsPets", b =>
                 {
                     b.Property<int>("PetID")

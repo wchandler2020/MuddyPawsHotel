@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -52,6 +53,12 @@ const Login = () => {
                     Login
                   </button>
                 </div>
+                <p className="lead text-left mt-3">
+                  Don't have an account? Please{" "}
+                  <Link to="/registration" className="text-danger">
+                    Register.
+                  </Link>
+                </p>
               </form>
             </div>
           </div>

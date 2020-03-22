@@ -1,6 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import useForm from "../../components/useForm";
+import { connect } from "react-redux";
 
-const Registration = () => {
+const Registration = props => {
+  const [useData, setFormData] = useState({});
   return (
     <Fragment>
       <section className="testimonial py-5 mt-5" id="testimonial">
@@ -23,13 +27,13 @@ const Registration = () => {
               </div>
             </div>
             <div className="col-md-8 py-5 border">
-              <h4 className="pb-4">Please fill with your details</h4>
+              <h4 className="pb-4">Welcome, New Muddy Paws Associate.</h4>
               <form>
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <input
-                      id="Full Name"
-                      name="Full Name"
+                      id="EmployeeName"
+                      name="EmployeeName"
                       placeholder="Full Name"
                       className="form-control"
                       type="text"
@@ -39,7 +43,8 @@ const Registration = () => {
                     <input
                       type="email"
                       className="form-control"
-                      id="inputEmail4"
+                      id="EmployeeEmail"
+                      name="EmployeeEmail"
                       placeholder="Email"
                     />
                   </div>
@@ -47,11 +52,10 @@ const Registration = () => {
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <input
-                      id="Mobile"
-                      name="Mobile"
-                      placeholder="Mobile"
+                      id="EmployeePhone"
+                      name="EmployeePhone"
+                      placeholder="Phone Number"
                       className="form-control"
-                      required="required"
                       type="text"
                     />
                   </div>
@@ -74,23 +78,12 @@ const Registration = () => {
                   </div>
                   <div className="form-group col-md-6">
                     <input
-                      id="Confirm"
-                      name="Confirm"
+                      id="ConfirmPassword"
+                      name="ConfirmPassword"
                       placeholder="Confirm Password"
                       className="form-control"
                       required="required"
                       type="password"
-                    />
-                  </div>
-
-                  <div className="form-group col-md-12">
-                    <textarea
-                      id="comment"
-                      name="comment"
-                      cols={40}
-                      rows={5}
-                      className="form-control"
-                      defaultValue={""}
                     />
                   </div>
                 </div>
@@ -126,6 +119,12 @@ const Registration = () => {
                     Register
                   </button>
                 </div>
+                <p className="lead text-left mt-3">
+                  Already have an account? Please{" "}
+                  <Link to="/login" className="text-danger">
+                    Login.
+                  </Link>
+                </p>
               </form>
             </div>
           </div>

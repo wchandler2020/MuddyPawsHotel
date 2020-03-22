@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
 import logo1 from "../../images/logo.png";
 
+let newDate = new Date();
+let year = newDate.getFullYear();
+
 const Footer = () => {
   return (
     <Fragment>
-      <footer className="pt-4 my-md-5 pt-md-5 border-top">
+      <footer className="pt-4 my-md-5 pt-md-5 ml-5 mt-1">
         <div className="row">
           <div className="col-12 col-md">
             <img
@@ -13,7 +16,9 @@ const Footer = () => {
               alt=""
               style={{ height: 120, width: 120, marginRight: 25 }}
             />
-            <small className="d-block mb-3 text-muted">© 2017-2019</small>
+            <small className="d-block mb-3 ml-4 text-muted">
+              © Muddy Paws {year}
+            </small>
           </div>
           <div className="col-6 col-md">
             <h5>Features</h5>

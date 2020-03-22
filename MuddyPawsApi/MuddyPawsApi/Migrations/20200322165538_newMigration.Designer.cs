@@ -10,8 +10,8 @@ using MuddyPawsApi.Models;
 namespace MuddyPawsApi.Migrations
 {
     [DbContext(typeof(MuddyPawsDBContext))]
-    [Migration("20200320130105_updatedPetsModel")]
-    partial class updatedPetsModel
+    [Migration("20200322165538_newMigration")]
+    partial class newMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,36 @@ namespace MuddyPawsApi.Migrations
                 .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("MuddyPawsApi.Models.MuddyPawsEmployee", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EmployeeEmail")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EmployeeName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EmployeePhone")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EmployeeRole")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("EmployeeId");
+
+                    b.ToTable("muddyPawsEmployee");
+                });
 
             modelBuilder.Entity("MuddyPawsApi.Models.MuddyPawsPets", b =>
                 {
@@ -40,8 +70,8 @@ namespace MuddyPawsApi.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OwnersName")
                         .HasColumnType("nvarchar(100)");
@@ -64,8 +94,8 @@ namespace MuddyPawsApi.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("ZipCode")
-                        .HasColumnType("int");
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PetID");
 

@@ -3,10 +3,28 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MuddyPawsApi.Migrations
 {
-    public partial class updatedPetsModel : Migration
+    public partial class newMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "muddyPawsEmployee",
+                columns: table => new
+                {
+                    EmployeeId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeName = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    EmployeeEmail = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    EmployeePhone = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    Username = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    EmployeeRole = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_muddyPawsEmployee", x => x.EmployeeId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "muddyPawsPet",
                 columns: table => new
@@ -20,8 +38,8 @@ namespace MuddyPawsApi.Migrations
                     StreetAddress = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     State = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    ZipCode = table.Column<int>(nullable: false),
-                    Number = table.Column<int>(nullable: false),
+                    ZipCode = table.Column<string>(nullable: true),
+                    Number = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     SpecialNeeds = table.Column<string>(type: "nvarchar(1000)", nullable: true),
                     CheckinDate = table.Column<DateTime>(nullable: false),
@@ -35,6 +53,9 @@ namespace MuddyPawsApi.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "muddyPawsEmployee");
+
             migrationBuilder.DropTable(
                 name: "muddyPawsPet");
         }
