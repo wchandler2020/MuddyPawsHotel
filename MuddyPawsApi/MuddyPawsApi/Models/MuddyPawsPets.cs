@@ -32,11 +32,13 @@ namespace MuddyPawsApi.Models
 
         [Column(TypeName = "nvarchar(100)")]
         public string State { get; set; }
-        
+
+        [Column(TypeName = "nvarchar(100)")]
         public string ZipCode { get; set; }
 
-        public string Number{ get; set; }
-
+        [Column(TypeName = "nvarchar(100)")]
+        public string Phone{ get; set; }
+        [Column(TypeName = "nvarchar(100)")]
         public string Email { get; set; }
 
         [Column(TypeName = "nvarchar(1000)")]
@@ -44,6 +46,8 @@ namespace MuddyPawsApi.Models
 
         [DataType(DataType.Date)]
         public DateTime CheckinDate { get; set; }
+
+        public string ProfilePicture { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime CheckoutDate { get; set; }

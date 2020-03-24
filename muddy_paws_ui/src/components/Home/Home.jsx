@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import img1 from "../../images/image1.jpg";
-
+import { Link } from "react-router-dom";
 import "./css/home.css";
 
 const Home = () => {
@@ -18,18 +18,21 @@ const Home = () => {
               <div className="showcase-right">
                 <h1>Muddy Paws</h1>
                 <p>
-                  Nestled just in the SOMA districts you’ll find our elite San
-                  Francisco pet hotel - a place where four-legged or winged
-                  guests can make new friends, participate in mentally
+                  Nestled just in the South West Center City area you’ll find
+                  our elite Philadelphia pet hotel - a place where four-legged
+                  or winged guests can make new friends, participate in mentally
                   stimulating activities, and get pampered in our spa before
                   retreating to their own private room to lounge on plush
                   bedding.
                 </p>
               </div>
               <br />
-              <a href="#" className="btn btn-outline-danger btn-lg main-btn">
+              <Link
+                to="/petsform"
+                className="btn btn-outline-danger btn-lg main-btn"
+              >
                 Register Your Pet Today!
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -63,7 +66,7 @@ const Home = () => {
                   type="button"
                   className="btn btn-lg btn-block btn-outline-danger"
                 >
-                  Make a Reservation
+                  Book Pet Boarding
                 </button>
               </div>
             </div>
@@ -107,7 +110,7 @@ const Home = () => {
                   type="button"
                   className="btn btn-lg btn-block btn-outline-danger"
                 >
-                  Contact us
+                  BooK Kitty Condo
                 </button>
               </div>
             </div>
