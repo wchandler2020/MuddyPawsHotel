@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import img1 from "../../images/image1.jpg";
 import { Link } from "react-router-dom";
+import Reviews from "../../components/Reviews/Reviews";
 import "./css/home.css";
 
 const Home = () => {
@@ -120,6 +121,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Reviews />
     </Fragment>
   );
 };

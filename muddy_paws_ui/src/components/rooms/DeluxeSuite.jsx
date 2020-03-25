@@ -1,8 +1,26 @@
 import React, { Component, Fragment } from "react";
 import img6 from "../../images/image6.jpg";
 import img7 from "../../images/image7.jpg";
+import axios from "axios";
 
 class DeluxeSuite extends Component {
+  state = {
+    Review: "",
+    DeluxPricing: "105",
+    BoardingPricing: "78",
+    KittyPricing: "60",
+    RemainingAvailable: "10"
+  };
+
+  componentDidMount() {
+    axios.post("https://localhost:44346/api/Hotels", {
+      DeluxPricing: this.state.DeluxPricing,
+      BoardingPricing: this.state.BoardingPricing,
+      KittyPricing: this.state.KittyPricing,
+      RemainingAvailable: this.state.RemainingAvailable
+    });
+  }
+
   render() {
     return (
       <div>
