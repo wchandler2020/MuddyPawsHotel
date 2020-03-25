@@ -62,12 +62,13 @@ const Home = () => {
                   <li>Regular feedings</li>
                   <li>Administration of up to 5 medications</li>
                 </ul>
-                <button
+                <Link
+                  to="/PetBoarding"
                   type="button"
                   className="btn btn-lg btn-block btn-outline-danger"
                 >
                   Book Pet Boarding
-                </button>
+                </Link>
               </div>
             </div>
             <div className="card mb-4 box-shadow">
@@ -84,12 +85,13 @@ const Home = () => {
                   <li>Premium raised beds</li>
                   <li>All Day Play pass</li>
                 </ul>
-                <button
+                <Link
+                  to="/DeluxeSuite"
                   type="button"
                   className="btn btn-lg btn-block btn-outline-danger"
                 >
                   Book Deluxe Suite
-                </button>
+                </Link>
               </div>
             </div>
             <div className="card mb-4 box-shadow">
@@ -106,12 +108,13 @@ const Home = () => {
                   <li>Plush Bedding</li>
                   <li>Deluxe Litter Box</li>
                 </ul>
-                <button
+                <Link
+                  to="/KittyCondo"
                   type="button"
                   className="btn btn-lg btn-block btn-outline-danger"
                 >
                   BooK Kitty Condo
-                </button>
+                </Link>
               </div>
             </div>
           </div>

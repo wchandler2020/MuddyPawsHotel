@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import logo from "../../images/logo.png";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+
 class Registration extends Component {
   state = {
     EmployeeEmail: "",
@@ -10,7 +12,8 @@ class Registration extends Component {
     EmployeeRole: "",
     Username: "",
     Password: "",
-    ConfirmPassword: ""
+    ConfirmPassword: "",
+    SecretKey: uuidv4()
   };
 
   handleChange(e) {
@@ -21,6 +24,11 @@ class Registration extends Component {
     e.preventDefault();
     if (this.state.Password !== this.state.ConfirmPassword) {
       window.alert("passwords do not match");
+    } else if (
+      this.state.Password.length < 6 ||
+      this.state.Password.length > 50
+    ) {
+      window.alert("passwords must container 6 to 50 characters.");
     } else {
       axios.post("https://localhost:44346/api/MuddyPawsEmployees", {
         EmployeeEmail: this.state.EmployeeEmail,
@@ -29,7 +37,8 @@ class Registration extends Component {
         EmployeeRole: this.state.EmployeeRole,
         Username: this.state.Username,
         Password: this.state.Password,
-        ConfirmPassword: this.state.ConfirmPassword
+        ConfirmPassword: this.state.ConfirmPassword,
+        SecretKey: this.state.SecretKey
       });
     }
   }
@@ -181,6 +190,7 @@ class Registration extends Component {
                     <button
                       type="submit"
                       className="btn btn-outline-danger btn-lg"
+                      onClick={() => console.log("it might work")}
                     >
                       Register
                     </button>

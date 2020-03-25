@@ -12,7 +12,17 @@ class EmployeeDashboard extends Component {
   componentDidMount() {
     axios
       .get("https://localhost:44346/api/MuddyPawsEmployees")
-      .then(response => console.log(response.data));
+      .then(function(response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function() {
+        console.log("will complete");
+      });
   }
 
   render() {

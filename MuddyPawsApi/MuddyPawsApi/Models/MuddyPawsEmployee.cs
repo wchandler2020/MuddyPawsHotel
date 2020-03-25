@@ -28,6 +28,9 @@ namespace MuddyPawsApi.Models
         public string Password { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
+        public string SecretKey { get; set; }
+
+        [Column(TypeName = "nvarchar(100)")]
         public string EmployeeRole { get; set; }
 
 

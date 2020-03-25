@@ -1,11 +1,13 @@
 import React, { Fragment, Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
+import axios from "axios";
 
 class Login extends Component {
   state = {
     Username: "",
-    Password: ""
+    Password: "",
+    isAuthenticated: false
   };
 
   handleChange(e) {
@@ -16,6 +18,24 @@ class Login extends Component {
     e.preventDefault();
     console.log("success");
   }
+
+  componentDidMount() {
+    axios
+      .get("https://localhost:44346/api/MuddyPawsEmployees")
+      .then(function(response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function() {
+        console.log("success");
+      });
+  }
+
+  authenticatedUser = e => {};
 
   render() {
     const { Username, Password } = this.state;

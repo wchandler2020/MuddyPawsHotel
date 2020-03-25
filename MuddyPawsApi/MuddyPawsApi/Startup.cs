@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MuddyPawsApi.Models;
+using Stripe;
 
 namespace MuddyPawsApi
 {
@@ -20,6 +21,7 @@ namespace MuddyPawsApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
         }
 
         public IConfiguration Configuration { get; }
@@ -32,7 +34,6 @@ namespace MuddyPawsApi
             services.AddCors();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(options => options.WithOrigins("http://localhost:3000")
