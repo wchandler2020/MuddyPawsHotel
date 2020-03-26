@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Modal, Button } from "react-bootstrap";
+import axios from "axios";
 
 class AddNewPet extends Component {
   state = {
@@ -11,11 +12,12 @@ class AddNewPet extends Component {
     City: "",
     State: "",
     ZipCode: "",
-    Number: "",
+    Phone: "",
     Email: "",
     CheckinDate: "",
     CheckoutDate: "",
-    SpecialNeeds: ""
+    SpecialNeeds: "",
+    ProfilePicture: ""
   };
 
   handleChange(e) {
@@ -24,7 +26,54 @@ class AddNewPet extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("form submitted");
+    axios
+      .post(" https://localhost:44346/api/MuddyPawsPets", {
+        PetName: this.state.PetName,
+        Type: this.state.Type,
+        Size: this.state.Size,
+        SpecialNeeds: this.state.SpecialNeeds,
+        OwnersName: this.state.OwnersName,
+        StreetAddress: this.state.StreetAddress,
+        City: this.state.City,
+        State: this.state.State,
+        State: this.state.ZipCode,
+        CheckinDate: this.state.CheckinDate,
+        CheckoutDate: this.state.CheckoutDate,
+        Email: this.state.Email,
+        Phone: this.state.Phone,
+        ProfilePicture: this.state.ProfilePicture
+      })
+      .then(function(response) {
+        this.props.history.push("/dashbooard");
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    // if (this.state.PetName == null || this.state.OwnersName == null) {
+    //   window.alert("Please complete Name Fields are required ");
+    // } else if (this.state.PetName.length < 2) {
+    //   window.alert("Please recheck pets name but be longer than characters");
+    // } else if (this.state.OwnersName.length < 4) {
+    //   window.alert("Please provide a first and Last Name");
+    // } else {
+    //   alert("it gets here");
+    //   axios.post("https://localhost:44346/api/MuddyPawsPets", {
+    //     PetName: this.state.PetName,
+    //     Type: this.state.Type,
+    //     Size: this.state.Size,
+    //     SpecialNeeds: this.state.SpecialNeeds,
+    //     OwnersName: this.state.OwnersName,
+    //     StreetAddress: this.state.StreetAddress,
+    //     City: this.state.City,
+    //     State: this.state.State,
+    //     State: this.state.ZipCode,
+    //     CheckinDate: this.state.CheckinDate,
+    //     CheckoutDate: this.state.CheckoutDate,
+    //     Email: this.state.Email,
+    //     Phone: this.state.Phone
+    //   });
+    // }
   }
 
   render() {
@@ -37,9 +86,12 @@ class AddNewPet extends Component {
       City,
       State,
       ZipCode,
-      Number,
+      Phone,
       Email,
-      SpecialNeeds
+      SpecialNeeds,
+      ProfilePicture,
+      CheckinDate,
+      CheckoutDate
     } = this.state;
     return (
       <Fragment>
@@ -51,11 +103,11 @@ class AddNewPet extends Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              <h2>Muddy Paws Reservation System</h2>
+              <h2 className="text-center">Muddy Paws Reservation System</h2>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form className="form" onSubmit={this.handleSubmit.bind(this)}>
+            <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="form-row">
                 <div className="form-group col-md-6">
                   <input
@@ -68,7 +120,39 @@ class AddNewPet extends Component {
                     onChange={this.handleChange.bind(this)}
                   />
                 </div>
-
+                <div className="form-group col-md-6">
+                  <input
+                    type="file"
+                    className="form-control"
+                    placeholder="OPTIONAL"
+                    id="ProfilePicture"
+                    value={ProfilePicture}
+                    name="ProfilePicture"
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </div>
+                <div className="form-group col-md-6">
+                  <label>Check In Date</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="CheckinDate"
+                    name="CheckinDate"
+                    value={CheckinDate}
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </div>
+                <div className="form-group col-md-6">
+                  <label>Check Out Date</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="CheckoutDate"
+                    name="CheckoutDate"
+                    value={CheckoutDate}
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </div>
                 <div className="form-group col-md-6">
                   <select
                     id="Type"
@@ -109,13 +193,13 @@ class AddNewPet extends Component {
                     rows={5}
                     placeholder="Please All Special Needs ie...Food, Medications, Sleeping Requirments"
                     value={SpecialNeeds}
-                    onChange={this.handleChange}
+                    onChange={this.handleChange.bind(this)}
                   />
                 </div>
                 <hr />
                 <div className="form-group col-md-6">
                   <input
-                    type="email"
+                    type="text"
                     className="form-control"
                     id="OwnersName"
                     value={OwnersName}
@@ -223,9 +307,9 @@ class AddNewPet extends Component {
                 </div>
                 <div className="form-group col-md-6">
                   <input
-                    id="Number"
-                    name="Number"
-                    value={Number}
+                    id="Phone"
+                    name="Phone"
+                    value={Phone}
                     placeholder="Phone Number"
                     className="form-control"
                     required="required"
@@ -241,7 +325,7 @@ class AddNewPet extends Component {
                     placeholder="Email Address"
                     className="form-control"
                     required="required"
-                    type="password"
+                    type="text"
                     onChange={this.handleChange.bind(this)}
                   />
                 </div>

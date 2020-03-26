@@ -24,7 +24,7 @@ export class Confirm extends Component {
         Email: this.props.Email,
         Phone: this.props.Phone
       },
-      console.log("submitted")
+      console.log(this.props.state)
     );
     this.props.nextStep();
   };

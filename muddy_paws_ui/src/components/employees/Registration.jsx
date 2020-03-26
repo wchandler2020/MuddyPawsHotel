@@ -30,16 +30,18 @@ class Registration extends Component {
     ) {
       window.alert("passwords must container 6 to 50 characters.");
     } else {
-      axios.post("https://localhost:44346/api/MuddyPawsEmployees", {
-        EmployeeEmail: this.state.EmployeeEmail,
-        EmployeePhone: this.state.EmployeePhone,
-        EmployeeName: this.state.EmployeeName,
-        EmployeeRole: this.state.EmployeeRole,
-        Username: this.state.Username,
-        Password: this.state.Password,
-        ConfirmPassword: this.state.ConfirmPassword,
-        SecretKey: this.state.SecretKey
-      });
+      axios
+        .post("https://localhost:44346/api/MuddyPawsEmployees", {
+          EmployeeEmail: this.state.EmployeeEmail,
+          EmployeePhone: this.state.EmployeePhone,
+          EmployeeName: this.state.EmployeeName,
+          EmployeeRole: this.state.EmployeeRole,
+          Username: this.state.Username,
+          Password: this.state.Password,
+          ConfirmPassword: this.state.ConfirmPassword,
+          SecretKey: this.state.SecretKey
+        })
+        .then(this.props.history.push("/login"));
     }
   }
 

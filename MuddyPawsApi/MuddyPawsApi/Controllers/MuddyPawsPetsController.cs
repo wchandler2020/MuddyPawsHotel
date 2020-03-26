@@ -47,8 +47,10 @@ namespace MuddyPawsApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMuddyPawsPets(int id, MuddyPawsPets muddyPawsPets)
         {
-            muddyPawsPets.PetID = id;
-            
+            if (id != muddyPawsPets.PetID)
+            {
+                return BadRequest();
+            }
 
             _context.Entry(muddyPawsPets).State = EntityState.Modified;
 

@@ -51,9 +51,6 @@ class EmployeeDashboard extends Component {
             </button>
             <AddNewPet show={this.state.addModalShow} onHide={addModalClose} />
           </ButtonToolbar>
-          {/* <a href="#" className="btn btn-outline-danger btn-lg">
-            Register a new guest.
-          </a> */}
         </header>
         <h1 className="display-3" style={{ fontSize: "20px" }}>
           Our Current Guest
@@ -81,6 +78,40 @@ class EmployeeDashboard extends Component {
               </div>
             </div>
           </div>
+        </div>
+        <div className="table-responsive">
+          <table className="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Owner's Name</th>
+                <th>Pet Name</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Email</th>
+                <th>Arr</th>
+                <th>Dep</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1,001</td>
+                <td>Lorem</td>
+                <td>ipsum</td>
+                <td>dolor</td>
+                <td>sit</td>
+                <td>1,001</td>
+                <td>Lorem</td>
+                <td>ipsum</td>
+                <td>dolor</td>
+                <td>sit</td>
+                <td>sit</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     );

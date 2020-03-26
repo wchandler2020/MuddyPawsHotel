@@ -10,7 +10,8 @@ class ReviewFormModal extends Component {
     PostedDate: Moment()
       .locale("fr")
       .format("dddd Do MMMM YYYY HH:mm")
-      .toString()
+      .toString(),
+    disableBtn: true
   };
 
   handleChange(e) {
@@ -29,12 +30,14 @@ class ReviewFormModal extends Component {
       axios.post("https://localhost:44346/api/Reviews", {
         ReviewerName: this.state.ReviewerName,
         ReviewBody: this.state.ReviewBody,
-        PostedDate: this.state.PostedDate
+        PostedDate: this.state.PostedDate,
+        disableBtn: true
       });
     }
   }
+
   render(props) {
-    const { ReviewBody, ReviewerName } = this.state;
+    const { ReviewBody, ReviewerName, disableBtn } = this.state;
     return (
       <Modal
         {...this.props}
@@ -79,7 +82,10 @@ class ReviewFormModal extends Component {
                   onChange={this.handleChange.bind(this)}
                 />
               </div>
-              <button type="submit" class="btn btn-outline-danger">
+              <button
+                type="submit"
+                class="btn btn-outline-danger {disableBtn ? disabled : ''}"
+              >
                 Post
               </button>
             </form>

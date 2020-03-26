@@ -16,7 +16,7 @@ namespace MuddyPawsApi.Models
         public string PetName { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string  Type { get; set; }
+        public string Type { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
         public string Size { get; set; }
@@ -44,12 +44,13 @@ namespace MuddyPawsApi.Models
         [Column(TypeName = "nvarchar(1000)")]
         public string SpecialNeeds { get; set; }
 
-        [DataType(DataType.Date)]
+        [Column(TypeName = "nvarchar(1000)")]
         public DateTime CheckinDate { get; set; }
 
+        [Column(TypeName = "nvarchar(1000)")]
         public string ProfilePicture { get; set; }
 
-        [DataType(DataType.Date)]
+        [Column(TypeName = "nvarchar(1000)")]
         public DateTime CheckoutDate { get; set; }
     }
 }

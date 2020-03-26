@@ -6,15 +6,29 @@ import axios from "axios";
 
 export default class Reviews extends Component {
   state = {
-    addModalShow: false
+    newReviews: [],
+    clicks: 0,
+    disableBtn: false
+  };
+
+  componentDidMount() {
+    axios.get("https://localhost:44346/api/Reviews").then(data =>
+      this.setState({
+        newReviews: data.data
+      })
+    );
+  }
+
+  IncrementItem = () => {
+    this.setState({ clicks: this.state.clicks + 1, disableBtn: true });
   };
 
   render() {
+    console.log(this.state.newReviews);
     let addModalClose = () =>
       this.setState({
         addModalShow: false
       });
-
     return (
       <Fragment>
         <div className="container mt-4">
@@ -24,60 +38,65 @@ export default class Reviews extends Component {
           >
             What They Are Saying About Us...
           </h3>
-          <div className="card">
-            <div className="card-body">
-              <div className="row">
-                <div className="col-md-2">
-                  <img
-                    src="https://image.ibb.co/jw55Ex/def_face.jpg"
-                    className="img img-rounded img-fluid"
-                  />
-                  <p className="text-secondary text-center">15 Minutes Ago</p>
-                </div>
-                <div className="col-md-10">
-                  <p>
-                    <a
-                      className="float-left"
-                      href="https://maniruzzaman-akash.blogspot.com/p/contact.html"
-                    >
-                      <strong>Maniruzzaman Akash</strong>
-                    </a>
-                    <span className="float-right">
-                      <i className="text-warning fa fa-star" />
-                    </span>
-                    <span className="float-right">
-                      <i className="text-warning fa fa-star" />
-                    </span>
-                    <span className="float-right">
-                      <i className="text-warning fa fa-star" />
-                    </span>
-                    <span className="float-right">
-                      <i className="text-warning fa fa-star" />
-                    </span>
-                  </p>
-                  <div className="clearfix" />
-                  <p>
-                    Lorem Ipsum is simply dummy text of the pr make but also the
-                    leap into electronic typesetting, remaining essentially
-                    unchanged. It was popularised in the 1960s with the release
-                    of Letraset sheets containing Lorem Ipsum passages, and more
-                    recently with desktop publishing software like Aldus
-                    PageMaker including versions of Lorem Ipsum.
-                  </p>
-                  <p>
-                    <a className="float-right btn btn-outline-primary ml-2">
-                      {" "}
-                      <i className="fa fa-reply" /> Reply
-                    </a>
-                    <a className="float-right btn text-white btn-danger">
-                      {" "}
-                      <i className="fa fa-heart" /> Like
-                    </a>
-                  </p>
+
+          {this.state.newReviews.map(review => {
+            return (
+              <div className="card">
+                <div className="card-body">
+                  <div className="row">
+                    <div className="col-md-2">
+                      <img
+                        src="https://image.ibb.co/jw55Ex/def_face.jpg"
+                        className="img img-rounded img-fluid"
+                      />
+                      <p className="text-secondary text-center">
+                        {review.postedDate}
+                      </p>
+                    </div>
+                    <div className="col-md-10">
+                      <p>
+                        <a
+                          className="float-left"
+                          href="https://maniruzzaman-akash.blogspot.com/p/contact.html"
+                        >
+                          <strong>{review.reviewerName}</strong>
+                        </a>
+                        <span className="float-right">
+                          <i className="text-warning fa fa-star" />
+                        </span>
+                        <span className="float-right">
+                          <i className="text-warning fa fa-star" />
+                        </span>
+                        <span className="float-right">
+                          <i className="text-warning fa fa-star" />
+                        </span>
+                        <span className="float-right">
+                          <i className="text-warning fa fa-star" />
+                        </span>
+                      </p>
+                      <div className="clearfix" />
+                      <p>{review.reviewBody}</p>
+                      <p>
+                        <a className="float-right btn btn-outline-primary ml-2">
+                          {" "}
+                          <i className="fa fa-reply" /> Reply
+                        </a>
+                        <a
+                          className="float-right btn text-white btn-danger"
+                          onClick={this.IncrementItem}
+                        >
+                          {" "}
+                          <i className="fa fa- {disableBtn ? disabled : ''" />{" "}
+                          Like <small>{this.state.clicks}</small>
+                        </a>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
+
           <div class="btn-group d-flex" role="group">
             <ButtonToolbar className="mt-1">
               <Button
