@@ -155,13 +155,13 @@ class AddNewPet extends Component {
                 </div>
                 <div className="form-group col-md-6">
                   <select
-                    id="Type"
+                    id="Size"
                     className="form-control"
-                    name="Type"
-                    value={Type}
+                    name="Size"
+                    value={Size}
                     onChange={this.handleChange.bind(this)}
                   >
-                    <option selected>What type of pet...</option>
+                    <option selected>What size is your pet...</option>
                     <option>Large (70lbs or more)</option>
                     <option>Meduim(40 - 70lbs)</option>
                     <option>Small (15 - 40lbs)</option>
@@ -170,12 +170,13 @@ class AddNewPet extends Component {
                 </div>
                 <div className="form-group col-md-6">
                   <select
-                    id="Size"
+                    id="Type"
                     className="form-control"
-                    name="Size"
-                    value={Size}
+                    name="Type"
+                    value={Type}
                     onChange={this.handleChange.bind(this)}
                   >
+                    <option selected>What tupe of pet do you have...</option>
                     <option>Dog</option>
                     <option>Cat</option>
                     <option>Bird</option>

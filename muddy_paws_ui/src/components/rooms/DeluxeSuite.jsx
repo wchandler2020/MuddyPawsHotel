@@ -1,25 +1,14 @@
 import React, { Component, Fragment } from "react";
 import img6 from "../../images/image6.jpg";
 import img7 from "../../images/image7.jpg";
+import logo1 from "../../images/logo.png";
 import axios from "axios";
+import StripeCheckout from "react-stripe-checkout";
 
 class DeluxeSuite extends Component {
   state = {
-    Review: "",
-    DeluxPricing: "105",
-    BoardingPricing: "78",
-    KittyPricing: "60",
-    RemainingAvailable: "10"
+    CurrentVistors: ""
   };
-
-  componentDidMount() {
-    axios.post("https://localhost:44346/api/Hotels", {
-      DeluxPricing: this.state.DeluxPricing,
-      BoardingPricing: this.state.BoardingPricing,
-      KittyPricing: this.state.KittyPricing,
-      RemainingAvailable: this.state.RemainingAvailable
-    });
-  }
 
   render() {
     return (
@@ -36,11 +25,24 @@ class DeluxeSuite extends Component {
             <button type="button" class="btn btn-danger btn-lg">
               Book Now! <span class="text-bold">6/10 remain</span>
             </button>
+            <StripeCheckout
+              token={this.onToken}
+              stripeKey="pk_test_PxZMuRYco84f49biOI5zgS1900rOYKYskd"
+              description="The Deluxe Suite 105/night" // the pop-in header subtitle
+              image={logo1}
+              billingAddress
+              shippingAddress
+              amount={105 * 100}
+              name="Muddy Paws"
+            />
           </div>
         </div>
         <div className="row mb-2">
           <div className="col-md-6">
-            <div className="card flex-md-row mb-4 box-shadow h-md-250">
+            <div
+              className="card flex-md-row mb-4 mt-2 box-shadow h-md-250"
+              style={{ border: "none" }}
+            >
               <div className="card-body d-flex flex-column align-items-start">
                 <p className="card-text mb-auto text-left">
                   <li>
@@ -68,7 +70,10 @@ class DeluxeSuite extends Component {
             </div>
           </div>
           <div className="col-md-6">
-            <div className="card flex-md-row mb-4 box-shadow h-md-250">
+            <div
+              className="card flex-md-row mb-4 mt-2 box-shadow h-md-250"
+              style={{ border: "none" }}
+            >
               <div className="card-body d-flex flex-column align-items-start">
                 <p className="card-text mb-auto text-left">
                   <li>

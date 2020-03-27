@@ -59,7 +59,7 @@ export default class Reviews extends Component {
                           className="float-left"
                           href="https://maniruzzaman-akash.blogspot.com/p/contact.html"
                         >
-                          <strong>{review.reviewerName}</strong>
+                          <strong className="mr-5">{review.reviewerName} says: </strong>
                         </a>
                         <span className="float-right">
                           <i className="text-warning fa fa-star" />
@@ -75,7 +75,7 @@ export default class Reviews extends Component {
                         </span>
                       </p>
                       <div className="clearfix" />
-                      <p>{review.reviewBody}</p>
+                      <p className="mr-5">{review.reviewBody}</p>
                       <p>
                         <a className="float-right btn btn-outline-primary ml-2">
                           {" "}

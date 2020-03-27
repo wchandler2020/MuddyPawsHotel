@@ -17,9 +17,5 @@
     <PackageReference Include="Stripe.net" Version="35.9.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 
 </Project>

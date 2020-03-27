@@ -9,7 +9,7 @@ namespace MuddyPawsApi.Models
 {
     public class MuddyPawsDBContext : DbContext
     {
-        public MuddyPawsDBContext(DbContextOptions<MuddyPawsDBContext> options):base(options)
+        public MuddyPawsDBContext(DbContextOptions<MuddyPawsDBContext> options) : base(options)
         {
 
         }

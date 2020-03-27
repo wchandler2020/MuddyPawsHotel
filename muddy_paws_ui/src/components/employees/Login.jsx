@@ -7,7 +7,8 @@ class Login extends Component {
   state = {
     Username: "",
     Password: "",
-    isAuthenticated: false
+    isAuthenticated: false,
+    userData: []
   };
 
   handleChange(e) {
@@ -16,29 +17,32 @@ class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("success");
+    this.state.userData.map(newData => {
+      
+      console.log(newData.username)
+      if(this.state.Username === newData.username && this.state.Password === newData.password ){
+        this.props.history.push("/dashboard")
+      }else{
+        window.alert("Please double your login and password and try again.")
+      }
+    })
   }
 
   componentDidMount() {
     axios
       .get("https://localhost:44346/api/MuddyPawsEmployees")
-      .then(function(response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function() {
-        console.log("success");
-      });
+      .then(response => this.setState({
+        userData: response.data
+      }))
   }
+
+  
 
   authenticatedUser = e => {};
 
   render() {
-    const { Username, Password } = this.state;
+    const { Username, Password, userData } = this.state;
+
     return (
       <Fragment>
         <section className="testimonial py-5 mt-5" id="testimonial">
@@ -57,6 +61,7 @@ class Login extends Component {
                   </div>
                 </div>
               </div>
+              
               <div className="col-md-8 py-5 border">
                 <h4 className="pb-4">Please enter your Login and Password</h4>
                 <form className="form" onSubmit={this.handleSubmit.bind(this)}>

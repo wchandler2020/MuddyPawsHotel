@@ -3,31 +3,39 @@ import "../../App.css";
 import axios from "axios";
 import { ButtonToolbar, Button } from "react-bootstrap";
 import AddNewPet from "./AddNewPet";
+import EmailForm from "../Email/EmailForm";
 
 class EmployeeDashboard extends Component {
   state = {
-    addModalShow: false
+    addModalShow: false,
+    addModalShow2: false,
+    AddPet: []
   };
 
   componentDidMount() {
-    axios
-      .get("https://localhost:44346/api/MuddyPawsEmployees")
-      .then(function(response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function() {
-        console.log("will complete");
-      });
+    axios.get("https://localhost:44346/api/MuddyPawsPets").then(res => {
+      console.log("response: " + res.data);
+      this.setState({ AddPet: res.data });
+    });
   }
+
+  deleteHandler = id => {
+    console.log(id);
+    axios
+      .delete(`https://localhost:44346/api/MuddyPawsPets/${id}`)
+      .then(res => {
+        const AddPet = res.data;
+        this.setState({ AddPet });
+      });
+  };
 
   render() {
     let addModalClose = () => {
       this.setState({ addModalShow: false });
+    };
+
+    let addModalClose2 = () => {
+      this.setState({ addModalShow2: false });
     };
 
     return (
@@ -53,37 +61,35 @@ class EmployeeDashboard extends Component {
           </ButtonToolbar>
         </header>
         <h1 className="display-3" style={{ fontSize: "20px" }}>
-          Our Current Guest
+          Our Current Guest{" "}
         </h1>
         {/* Page Features */}
+
         <div className="row text-center">
-          <div className="col-lg-3 col-md-6 mb-4">
-            <div className="card h-100">
-              <img
-                className="card-img-top"
-                src="http://placehold.it/500x325"
-                alt
-              />
-              <div className="card-body">
-                <h4 className="card-title">Pet Name</h4>
-                <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Sapiente esse necessitatibus neque.
-                </p>
+          {this.state.AddPet.map(pet => {
+            return (
+              <div className="col-lg-3 col-md-6 mb-4">
+                <div className="card h-100">
+                  <img
+                    className="card-img-top"
+                    src="https://source.unsplash.com/random/300x300/?pets"
+                    alt
+                  />
+                  <div className="card-body">
+                    <p className="card-text">{pet.specialNeeds}</p>
+                  </div>
+                  <h4 className="card-title font-weight-bold">{pet.petName}</h4>
+                </div>
               </div>
-              <div className="card-footer">
-                <a href="#" className="btn btn-primary">
-                  Find Out More!
-                </a>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
+
         <div className="table-responsive">
           <table className="table table-striped table-sm">
             <thead>
               <tr>
-                <th>Owner's Name</th>
+                <th>Owner</th>
                 <th>Pet Name</th>
                 <th>Type</th>
                 <th>Size</th>
@@ -91,25 +97,98 @@ class EmployeeDashboard extends Component {
                 <th>City</th>
                 <th>State</th>
                 <th>Zip</th>
+                <th>Phone</th>
                 <th>Email</th>
                 <th>Arr</th>
                 <th>Dep</th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-                <td>sit</td>
-              </tr>
+              {this.state.AddPet.map(pet => {
+                return (
+                  <tr>
+                    <td>
+                      <small>{pet.ownersName}</small>
+                    </td>
+                    <td>
+                      <small>{pet.petName}</small>
+                    </td>
+                    <td>
+                      <small>{pet.type}</small>
+                    </td>
+                    <td>
+                      <small>{pet.size}</small>
+                    </td>
+                    <td>
+                      <small>{pet.streetAddress}</small>
+                    </td>
+                    <td>
+                      <small>{pet.city}</small>
+                    </td>
+                    <td>
+                      <small>{pet.state}</small>
+                    </td>
+                    <td>
+                      <small>{pet.zipCode}</small>
+                    </td>
+                    <td>
+                      <small>{pet.phone}</small>
+                    </td>
+                    <td>
+                      <small>{pet.email}</small>
+                    </td>
+                    <td>
+                      <small>{pet.checkinDate}</small>
+                    </td>
+                    <td>
+                      <small>{pet.checkoutDate}</small>
+                    </td>
+                    <td>
+                      <small>
+                        <a href="" className=" btn btn-sm btn-outline-success">
+                          Edit
+                        </a>
+                      </small>
+                    </td>
+                    <td>
+                      <small>
+                        <button
+                          type="button"
+                          href=""
+                          className=" btn btn-sm btn-outline-danger"
+                          onClick={() => this.deleteHandler(pet.petID)}
+                        >
+                          delete
+                        </button>
+                      </small>
+                    </td>
+                    <td>
+                      <small>
+                        <ButtonToolbar>
+                          <button
+                            type="button"
+                            className="btn btn-outline-danger btn-sm"
+                            onClick={() =>
+                              this.setState({
+                                addModalShow2: true
+                              })
+                            }
+                          >
+                            email
+                          </button>
+
+                          <EmailForm
+                            show={this.state.addModalShow2}
+                            onHide={addModalClose2}
+                          />
+                        </ButtonToolbar>
+                      </small>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

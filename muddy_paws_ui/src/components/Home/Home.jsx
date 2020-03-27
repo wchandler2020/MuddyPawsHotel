@@ -18,7 +18,7 @@ const Home = () => {
             <div className="col-md-6 col-sm-6">
               <div className="showcase-right">
                 <h1>Muddy Paws</h1>
-                <p class="justify-left">
+                <p class="text-left">
                   Nestled just in the South West Center City area you’ll find
                   our elite Philadelphia pet hotel - a place where four-legged
                   or winged guests can make new friends, participate in mentally

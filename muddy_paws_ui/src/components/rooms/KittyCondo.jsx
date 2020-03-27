@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import img11 from "../../images/image11.gif";
 import img12 from "../../images/image12.jpg";
+import logo1 from "../../images/logo.png";
+import StripeCheckout from "react-stripe-checkout";
 
 class KittyCondo extends Component {
   render() {
@@ -17,11 +19,24 @@ class KittyCondo extends Component {
             <button type="button" class="btn btn-danger btn-lg">
               Book Now!
             </button>
+            <StripeCheckout
+              token={this.onToken}
+              stripeKey="pk_test_PxZMuRYco84f49biOI5zgS1900rOYKYskd"
+              description="Kitty Condo 60/night" // the pop-in header subtitle
+              image={logo1}
+              billingAddress
+              shippingAddress
+              amount={105 * 100}
+              name="Muddy Paws"
+            />
           </div>
         </div>
         <div className="row mb-2">
           <div className="col-md-6">
-            <div className="card flex-md-row mb-4 box-shadow h-md-250">
+            <div
+              className="card flex-md-row mb-4 mt-2 box-shadow h-md-250"
+              style={{ border: "none" }}
+            >
               <div className="card-body d-flex flex-column align-items-start">
                 <p className="card-text mb-auto text-left">
                   <li>Room Service with up to 3 meal times</li>
@@ -44,7 +59,10 @@ class KittyCondo extends Component {
             2 Kitty Cuddles
           </div>
           <div className="col-md-6">
-            <div className="card flex-md-row mb-4 box-shadow h-md-250">
+            <div
+              className="card flex-md-row mb-4 mt-2 box-shadow h-md-250"
+              style={{ border: "none" }}
+            >
               <div className="card-body d-flex flex-column align-items-start">
                 <p className="card-text mb-auto text-left">
                   <li>Private Plush Bedding & Litter Box in each room.</li>
